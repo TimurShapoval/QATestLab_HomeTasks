@@ -1,9 +1,15 @@
 package myprojects.automation.assignment3;
 
+import myprojects.automation.assignment3.utils.MyListener;
 import myprojects.automation.assignment3.utils.Properties;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.io.File;
 
@@ -13,7 +19,6 @@ import java.io.File;
 public abstract class BaseScript {
 
     /**
-     *
      * @return New instance of {@link WebDriver} object. Driver type is based on passed parameters
      * to the automation project, returns {@link ChromeDriver} instance by default.
      */
@@ -36,9 +41,12 @@ public abstract class BaseScript {
      * to the automation project, returns {@link ChromeDriver} instance by default.
      */
     public static EventFiringWebDriver getConfiguredDriver() {
-        WebDriver driver = getDriver();
-
-       // TODO configure browser window (set timeouts, browser pindow position) and connect loggers.
-        throw new UnsupportedOperationException("Method doesn't return configured WebDriver instance");
+        EventFiringWebDriver driver = new EventFiringWebDriver(getDriver());
+        driver.register(new MyListener());
+        return driver;
+        // TODO configure browser window (set timeouts, browser pindow position) and connect loggers.
+        // throw new UnsupportedOperationException("Method doesn't return configured WebDriver instance");
     }
+
+
 }

@@ -2,6 +2,7 @@ package myprojects.automation.assignment3.utils;
 
 import org.openqa.selenium.remote.BrowserType;
 
+
 /**
  * Help class to get passed parameters from environment for further usage in the automation project
  */
@@ -11,7 +12,6 @@ public class Properties {
     private static final String DEFAULT_BROWSER = BrowserType.CHROME;
 
     /**
-     *
      * @return Website frontend.
      */
     public static String getBaseUrl() {
@@ -19,7 +19,6 @@ public class Properties {
     }
 
     /**
-     *
      * @return Website backend (ULR of the Admin Panel.)
      */
     public static String getBaseAdminUrl() {
@@ -27,7 +26,6 @@ public class Properties {
     }
 
     /**
-     *
      * @return The name of the browser that need to be used for execution.
      */
     public static String getBrowser() {
@@ -35,6 +33,7 @@ public class Properties {
     }
 
 }
+
 
 /**
  * All parameters that are passed to automation project
@@ -45,6 +44,7 @@ enum EnvironmentVariables {
     BROWSER("browser");
 
     private String value;
+
     EnvironmentVariables(String value) {
         this.value = value;
     }
